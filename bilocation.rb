@@ -2,9 +2,9 @@
 class Bilocation < Formula
   desc "A tagging file system"
   homepage "https://github.com/corvus-ch/tagfuse"
-  url "https://github.com/corvus-ch/bilocation/releases/download/v0.3.0/bilocation_0.3.0_darwin_amd64.tar.gz"
-  version "0.3.0"
-  sha256 "7f2e08c89d0ef4bedf152482ca01987bd5417fa4b6f077111845c03216ac6a90"
+  url "https://github.com/corvus-ch/bilocation/releases/download/v0.4.0/bilocation_0.4.0_darwin_amd64.tar.gz"
+  version "0.4.0"
+  sha256 "729e84ce9c82c5b66a55edcc5ab7481a9ed5115e1996ac698ddefab4076f770b"
 
   def install
     bin.install "bilocation"
