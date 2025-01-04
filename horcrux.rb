@@ -5,20 +5,20 @@
 class Horcrux < Formula
   desc "A helper for preparing backups of data worth protecting"
   homepage "https://github.com/corvus-ch/horcrux"
-  version "1.4.0"
+  version "1.5.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/corvus-ch/horcrux/releases/download/v1.4.0/horcrux_1.4.0_darwin_arm64.tar.gz"
-      sha256 "4c2857b81ea61a644c5628db2c73e2168e54b1428c9ec2faa37d661a586674b5"
+    if Hardware::CPU.intel?
+      url "https://github.com/corvus-ch/horcrux/releases/download/v1.5.0/horcrux_1.5.0_darwin_amd64.tar.gz"
+      sha256 "489cd0b7494855c0a3f6261f827e619779dfbb5200659c8e8ae7b747b7cd412d"
 
       def install
         bin.install "horcrux"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/corvus-ch/horcrux/releases/download/v1.4.0/horcrux_1.4.0_darwin_amd64.tar.gz"
-      sha256 "19afcbda39d4a98801a106cf9d6bdcec477b028211844375b12f4b4b6b85ac80"
+    if Hardware::CPU.arm?
+      url "https://github.com/corvus-ch/horcrux/releases/download/v1.5.0/horcrux_1.5.0_darwin_arm64.tar.gz"
+      sha256 "d1121764044b277112b8c5c581c47af9c7fac5e6ad70b37bba1207d90f8219b1"
 
       def install
         bin.install "horcrux"
@@ -27,28 +27,34 @@ class Horcrux < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/corvus-ch/horcrux/releases/download/v1.4.0/horcrux_1.4.0_linux_arm64.tar.gz"
-      sha256 "911abfd3981220458221ac671aa6b2d22790106e033c3a9199fc9def7b1659c4"
-
-      def install
-        bin.install "horcrux"
-      end
-    end
     if Hardware::CPU.intel?
-      url "https://github.com/corvus-ch/horcrux/releases/download/v1.4.0/horcrux_1.4.0_linux_amd64.tar.gz"
-      sha256 "76a9d7a1674c4a4b50ab8e69ea90d6b88e97ffe15bf5bf315cb70d7449fe73f5"
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/corvus-ch/horcrux/releases/download/v1.5.0/horcrux_1.5.0_linux_amd64.tar.gz"
+        sha256 "863d0763da9f70780731742f089b8c72f2125297387d34887269726e66863b32"
 
-      def install
-        bin.install "horcrux"
+        def install
+          bin.install "horcrux"
+        end
       end
     end
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/corvus-ch/horcrux/releases/download/v1.4.0/horcrux_1.4.0_linux_armv6.tar.gz"
-      sha256 "ca3c384690a6db4b70f9f9b116955c1904c2c0d10b1d38b8d95b51785ea47c09"
+    if Hardware::CPU.arm?
+      if !Hardware::CPU.is_64_bit?
+        url "https://github.com/corvus-ch/horcrux/releases/download/v1.5.0/horcrux_1.5.0_linux_armv6.tar.gz"
+        sha256 "7643af30adf5b03f862b6ac3dd9e86b96803b787cb81fc9e67b9f5112ca0bafa"
 
-      def install
-        bin.install "horcrux"
+        def install
+          bin.install "horcrux"
+        end
+      end
+    end
+    if Hardware::CPU.arm?
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/corvus-ch/horcrux/releases/download/v1.5.0/horcrux_1.5.0_linux_arm64.tar.gz"
+        sha256 "b55f15b05fa7d81998b424b0b8aa82bb773d55fb1437838c445132ca669f3ee2"
+
+        def install
+          bin.install "horcrux"
+        end
       end
     end
   end
